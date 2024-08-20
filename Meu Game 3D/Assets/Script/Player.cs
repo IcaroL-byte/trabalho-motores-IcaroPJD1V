@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,15 +7,24 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     public int velocidade = 7;
+    public int jumpS = 7;
+    public bool isGround;
     private Rigidbody rb;
-
+    
 
     void Start()
     {
        TryGetComponent(out rb);
     }
 
-    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!isGround && collision.gameObject.tag == "ground")
+        {
+            isGround = true;
+        }
+    }
+
     void Update()
     {
         
@@ -28,6 +38,12 @@ public class Player : MonoBehaviour
         {
             //jogador caiu
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space) && isGround)
+        {
+            rb.AddForce(Vector3.up * jumpS, ForceMode.Impulse);
+            isGround = false;
         }
     }
 }

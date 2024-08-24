@@ -15,6 +15,7 @@ public class Coin : MonoBehaviour
     {
         if (collisionCoin.tag == "Player")
         {
+            FindObjectOfType<GameManeger>().SubtrairMoeda(1);
             Destroy(gameObject);
         }
     }

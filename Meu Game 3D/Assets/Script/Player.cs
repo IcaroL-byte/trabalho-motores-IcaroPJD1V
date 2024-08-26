@@ -10,11 +10,12 @@ public class Player : MonoBehaviour
     public int jumpS = 7;
     public bool isGround;
     private Rigidbody rb;
-    
-
+    private AudioSource source;
+        
     void Start()
     {
        TryGetComponent(out rb);
+       TryGetComponent(out source);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -42,6 +43,8 @@ public class Player : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space) && isGround)
         {
+            source.Play();
+            
             rb.AddForce(Vector3.up * jumpS, ForceMode.Impulse);
             isGround = false;
         }

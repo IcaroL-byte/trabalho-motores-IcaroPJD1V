@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime;
+using UnityEngine.SceneManagement;
 
 public class GameManeger : MonoBehaviour
 {
@@ -11,7 +12,8 @@ public class GameManeger : MonoBehaviour
 
     public AudioClip clipMoeda, clipVitoria;
     private AudioSource soucer;
-    
+
+    public string nomeDaProxFase;
     void Start()
     {
         restantes = FindObjectsOfType<Coin>().Length;
@@ -31,11 +33,13 @@ public class GameManeger : MonoBehaviour
             msg_vitoria.text = "Parabens";
             soucer.Stop();
             soucer.PlayOneShot(clipVitoria);
+            
+            Invoke("ProxFase",3);
         }
     }
 
-    void Update()
+    void ProxFase()
     {
-        
+        SceneManager.LoadScene(nomeDaProxFase);
     }
 }

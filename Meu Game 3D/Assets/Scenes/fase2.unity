@@ -477,6 +477,11 @@ PrefabInstance:
       propertyPath: msg_vitoria
       value: 
       objectReference: {fileID: 22241224}
+    - target: {fileID: 2191609902920660718, guid: 4712fe580c4c6c444a8ccdb62b260cd7,
+        type: 3}
+      propertyPath: nomeDaProxFase
+      value: fase3
+      objectReference: {fileID: 0}
     - target: {fileID: 8762421677211366741, guid: 4712fe580c4c6c444a8ccdb62b260cd7,
         type: 3}
       propertyPath: m_LocalPosition.x
